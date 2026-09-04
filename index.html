@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NexGen — AI Voice Security</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <div class="brand-text">
+        <h1>NEXGEN</h1>
+        <p class="brand-sub">AI VOICE SECURITY</p>
+      </div>
+    </div>
+    <p class="tagline">Detect potentially synthetic or cloned voices using AI.</p>
+  </header>
+
+  <main class="app-main">
+
+    <section class="panel upload-panel" id="upload-panel">
+      <div class="panel-label">01 · INPUT</div>
+
+      <div id="drop-zone" class="drop-zone">
+        <div class="drop-zone-icon">◍</div>
+        <p class="drop-zone-title">Drag &amp; drop an audio file</p>
+        <p class="drop-zone-sub">or</p>
+        <label for="file-input" class="choose-btn">Choose Audio</label>
+        <input type="file" id="file-input" accept=".wav,.mp3,.m4a,audio/*" hidden />
+        <p class="formats-note">Supported formats: WAV, MP3, M4A</p>
+      </div>
+
+      <div id="file-info" class="file-info" hidden>
+        <span class="file-icon">♪</span>
+        <span id="file-name" class="file-name"></span>
+        <button id="clear-file" class="clear-btn" aria-label="Remove file">✕</button>
+      </div>
+
+      <button id="analyze-btn" class="analyze-btn" disabled>Analyze Voice</button>
+
+      <div id="error-box" class="error-box" hidden></div>
+    </section>
+
+    <section class="panel loading-panel" id="loading-panel" hidden>
+      <div class="panel-label">02 · PROCESSING</div>
+      <div class="loader">
+        <div class="loader-ring"></div>
+      </div>
+      <p class="loading-text">Analyzing voice...</p>
+      <p class="loading-sub">Extracting audio features and running AI model</p>
+    </section>
+
+    <section class="panel result-panel" id="result-panel" hidden>
+      <div class="panel-label">03 · RESULT</div>
+
+      <div id="demo-banner" class="demo-banner" hidden>
+        Demo mode — prediction is simulated for interface testing. Not a validated AI detection result.
+      </div>
+
+      <div class="result-grid">
+        <div class="result-block prediction-block">
+          <span class="result-key">Prediction</span>
+          <span id="result-prediction" class="result-value prediction-value">—</span>
+        </div>
+
+        <div class="result-block">
+          <span class="result-key">Confidence</span>
+          <span id="result-confidence" class="result-value">—</span>
+        </div>
+
+        <div class="result-block">
+          <span class="result-key">Risk Score</span>
+          <span id="result-risk-score" class="result-value">—</span>
+        </div>
+
+        <div class="result-block">
+          <span class="result-key">Risk Level</span>
+          <span id="result-risk-level" class="result-value">—</span>
+        </div>
+      </div>
+
+      <div class="meter-track">
+        <div id="meter-fill" class="meter-fill"></div>
+      </div>
+
+      <p class="result-key">Explanation</p>
+      <p id="result-explanation" class="explanation-text">—</p>
+
+      <div id="security-note" class="security-note">
+        <span id="security-icon" class="security-icon"></span>
+        <p id="security-message"></p>
+      </div>
+
+      <button id="reset-btn" class="reset-btn">Analyze Another File</button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>NexGen Version 1 — local MVP for hackathon demonstration purposes.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
